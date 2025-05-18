@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CarJanitors</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .brand-header {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .brand-header img {
+      height: 35px;
+      width: auto;
+      margin-right: 10px;
+      background: black;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .brand-header span {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+
+    .background-img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60vh;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(1.1) contrast(1.1);
+    }
+
+    .hero {
+      font-family: Arial, Helvetica, sans-serif;
+      height: 55vh;
+      padding-top: 100px;
+      display: block;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .content h1 {
+      font-size: 2.8rem;
+      margin: 0.4rem 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12rem;
+      justify-content: center;
+      margin-top: 6rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s ease;
+      width: 180px;
+    }
+
+    .btn.white {
+      background-color: white;
+      color: rgb(0, 47, 255);
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
+    .black-box {
+      background-color: black;
+      height: 600px;
+      margin-top: -80px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .black-box-content {
+      color: white;
+      max-width: 620px;
+      padding: 40px 10%;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    .black-box-content h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .black-box-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .custom-dropdown-wrapper {
+      position: absolute;
+      top: 20px;
+      right: 70px;
+      z-index: 9999;
+    }
+
+    .custom-dropdown-wrapper .dots {
+      display: flex;
+      padding: 10px;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+    }
+
+    .custom-dropdown-wrapper .dot {
+      background: #fff;
+      border-radius: 50%;
+      height: 10px;
+      margin-right: 5px;
+      width: 10px;
+    }
+
+    .custom-dropdown-wrapper .dot:last-child {
+      margin-right: 0;
+    }
+
+    .custom-dropdown-wrapper .list {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      width: 180px;
+      padding: 0;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .custom-dropdown-wrapper .list.show {
+      max-height: 300px;
+      padding: 10px;
+      opacity: 1;
+      pointer-events: auto;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .custom-dropdown-wrapper .list ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    .custom-dropdown-wrapper .list li {
+      padding: 8px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .custom-dropdown-wrapper .list li:hover {
+      background: #f0f0f0;
+    }
+
+    .grey-box {
+      background-color: rgb(97, 96, 96);
+      height: auto;
+      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grey-box-content h2 {
+      color: white;
+      margin: 0;
+      padding: 0;
+      font-size: 3.4rem;
+      line-height: 1.2;
+    }
+
+    .services-strip {
+      display: flex;
+      justify-content: space-between; /* keeps edge alignment */
+      flex-wrap: wrap;
+      gap: 16px; /* space between cards */
+      padding: 4px 8px 4px; /* less top padding */
+      background-color: #1a1a1a;
+      margin: 0; /* remove default spacing */
+    }
+
+    .service-card {
+      position: relative;
+      flex: 1;
+      min-width: 160px; /* or whatever size looks good on mobile */
+      max-width: calc(20% - 12px); /* fit 5 cards per row with gap */
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .label-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      color: rgb(0, 47, 255);
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .black-box-content {
+        padding: 40px 20px;
+      }
+      .services-strip {
+        flex-direction: column;
+        gap: 2px;
+        padding: 20px 12px;
+        align-items: center;
+      }
+      .service-card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="images/bg.PNG" class="background-img" alt="Background">
+
+  <div class="brand-header">
+    <img src="images/logo.png" alt="CarJanitors Logo">
+    <span>CarJanitors Mobile Detailing</span>
+  </div>
+
+  <div class="custom-dropdown-wrapper">
+    <div class="dots" onclick="toggleDropdown(this)">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="list">
+      <ul>
+        <li onclick="alert('Go to page')">Home</li>
+        <li onclick="alert('Go to page')">Book Now</li>
+        <li onclick="alert('Go to page')">Exterior Detail</li>
+        <li onclick="alert('Go to page')">Interior Detail</li>
+        <li onclick="alert('Go to page')">Full Detail</li>
+        <li onclick="alert('Go to page')">BiWeekly Detail</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="content">
+      <h1>Mobile Detailing</h1>
+      <h1>-</h1>
+      <h1>We Come To You</h1>
+      <div style="height: 20px;"></div>
+      <div class="buttons">
+        <button class="btn white" onclick="viewServices()">VIEW SERVICES</button>
+        <button class="btn white" onclick="bookNow()">BOOK NOW</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="black-box">
+    <div class="black-box-content">
+      <h2>About Us</h2>
+      <p>Want to have that clean feeling again, as if your car was brand new, book CarJanitors today! We provide a premium service that will come to your house and make sure you are left satisfied! Our goal is to make your car cleaned and maintained with proper care and with excellent customer service, and at an affordable price! Come book us today!</p>
+    </div>
+  </div>
+
+  <div class="grey-box">
+    <div class="grey-box-content">
+      <h2>Our Services</h2>
+    </div>
+  </div>
+
+  <div class="services-strip">
+    <div class="service-card">
+      <img src="images/Spin/spin1.png" alt="Exterior Detail">
+      <button class="btn white label-button" onclick="location.href='/services/exterior'">EXTERIOR DETAIL</button>
+    </div>
+    <div class="service-card">
+      <img src="images/Spin/spin2.png" alt="Interior Detail">
+      <button class="btn white label-button" onclick="location.href='/services/interior'">INTERIOR DETAIL</button>
+    </div>
+    <div class="service-card">
+      <img src="images/Spin/spin3.png" alt="Full Detail">
+      <button class="btn white label-button" onclick="location.href='/services/full'">FULL DETAIL</button>
+    </div>
+    <div class="service-card">
+      <img src="images/Spin/spin2.png" alt="Biweekly Detail">
+      <button class="btn white label-button" onclick="location.href='/services/biweekly'">BIWEEKLY DETAIL</button>
+    </div>
+    <div class="service-card">
+      <img src="images/Spin/spin1.png" alt="Monthly Detail">
+      <button class="btn white label-button" onclick="location.href='/services/monthly'">MONTHLY DETAIL</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleDropdown(element) {
+      const allDots = document.querySelectorAll('.custom-dropdown-wrapper .dots');
+      const allLists = document.querySelectorAll('.custom-dropdown-wrapper .list');
+      allDots.forEach(dot => {
+        if (dot !== element) dot.classList.remove('active');
+      });
+      allLists.forEach(list => {
+        if (list !== element.nextElementSibling) list.classList.remove('show');
+      });
+      element.classList.toggle('active');
+      const list = element.nextElementSibling;
+      if (list) list.classList.toggle('show');
+    }
+
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.custom-dropdown-wrapper');
+      if (!dropdown.contains(event.target)) {
+        dropdown.querySelector('.dots').classList.remove('active');
+        dropdown.querySelector('.list').classList.remove('show');
+      }
+    });
+
+    function viewServices() {
+      alert("View Services clicked");
+    }
+
+    function bookNow() {
+      alert("Book Now clicked");
+    }
+  </script>
+</body>
+</html>
