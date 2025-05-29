@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Exterior Detail | CarJanitors</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000; /* dark background */
+  }
+
+  /* Header & Background */
+  .hero-background {
+    height: 60vh;
+    background-image: url("images/bg.PNG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .brand-header {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .brand-header img {
+    height: 35px;
+    width: auto;
+    margin-right: 10px;
+    background: black;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  .brand-header span {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+  }
+
+  /* Premium Package Section */
+  .premium-section {
+    background-color: #000;
+    padding: 50px 20px;
+    margin-bottom: 50px; /* space from footer */
+    text-align: center;
+  }
+
+  .premium-heading {
+    color: rgb(255, 255, 255);
+    font-size: 4rem;
+    margin-bottom: 30px;
+  }
+
+  /* Stack items vertically with moderate font size */
+  .premium-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Slightly larger text for readability */
+  .premium-item h2 {
+    font-size: 1.1rem; /* increased from 0.9rem for better readability */
+    color: #fff;
+    margin: 0;
+  }
+
+  /* Prices styling with more spacing */
+  .prices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 70px; /* wide gaps for clarity */
+    margin-top: 50px;
+  }
+
+  .price-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-item p {
+    color: #fff;
+    align-items: center;
+    margin: 0.2rem 0;
+  }
+
+  /* Space between prices and button - less than before for cohesion */
+  .btn {
+    font-size: 0.9rem; /* less small, more readable */
+    padding: 35px 30px;
+  }
+
+  /* Make sure the hover effect works for your button */
+  .hover-opacity:hover {
+    opacity: 0.8;
+  }
+
+  .custom-dropdown-wrapper {
+      position: absolute;
+      top: 20px;
+      right: 70px;
+      z-index: 9999;
+    }
+
+    .custom-dropdown-wrapper .dots {
+      display: flex;
+      padding: 10px;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+    }
+
+    .custom-dropdown-wrapper .dot {
+      background: #fff;
+      border-radius: 50%;
+      height: 10px;
+      margin-right: 5px;
+      width: 10px;
+    }
+
+    .custom-dropdown-wrapper .dot:last-child {
+      margin-right: 0;
+    }
+
+    .custom-dropdown-wrapper .list {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      width: 180px;
+      padding: 0;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .custom-dropdown-wrapper .list.show {
+      max-height: 300px;
+      padding: 10px;
+      opacity: 1;
+      pointer-events: auto;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .custom-dropdown-wrapper .list ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    .custom-dropdown-wrapper .list li {
+      padding: 8px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .custom-dropdown-wrapper .list li:hover {
+      background: #f0f0f0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1.2s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  /* Responsive adjustments */
+  @media(max-width: 768px) {
+    .premium-items {
+      width: 90%;
+    }
+    .premium-item h2 {
+      font-size: 1rem;
+    }
+    .prices {
+      gap: 30px;
+    }
+    .button-container {
+      margin-top: 10px;
+    }
+    .book-btn a {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+</head>
+<body>
+<link rel="icon" type="image/logo.png" href="/favicon.png" />
+<div class="hero-background"></div>
+
+<!-- Premium Package Section -->
+<div class="premium-section reveal" >
+  <h1 class="premium-heading">Exterior Detail</h1>
+  <!-- Descriptions stacked vertically with slightly larger font for clarity -->
+  <div class="premium-items">
+    <div class="premium-item"><h2 style="font-size:1.1rem;">• Wheels deep cleaned, including brake dust</h2></div>
+    <div class="premium-item"><h2 style="font-size:1.1rem;">• Pre-Washed</h2></div>
+    <div class="premium-item"><h2 style="font-size:1.1rem;">• Full Exterior Foam Bath</h2></div>
+    <div class="premium-item"><h2 style="font-size:1.1rem;">• Contact Washed</h2></div>
+    <div class="premium-item"><h2 style="font-size:1.1rem;">• Streak-Free Towel Dried</h2></div>
+    <div class="premium-item"><h2 style="font-size:1.1rem;">• Streak-Free Glass Cleaner Applied</h2></div>
+  </div>
+  <!-- Prices with more spacing -->
+  <div class="prices" style="margin-top:50px;">
+    <div class="price-item">
+      <p>Sedan/Coupe</p>
+      <p>$65</p>
+    </div>
+    <div class="price-item">
+      <p>SUV</p>
+      <p>$75</p>
+    </div>
+    <div class="price-item">
+      <p>Large SUV/Truck</p>
+      <p>$85</p>
+    </div>
+  </div>
+  <!-- Button slightly closer to prices -->
+  <div class="btn" style="margin-top:20px;">
+    <a href="Scheduling.html" class="hover-opacity" style="
+      display: inline-block;
+      background-color: white;
+      color: rgb(0, 47, 255);
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 0.9rem; /* slightly bigger for readability */
+      text-decoration: none;">
+      BOOK NOW
+    </a>
+  </div>
+</div>
+
+<!-- Footer & scripts -->
+<div class="brand-header reveal">
+  <img src="images/logo.png" alt="CarJanitors Logo" />
+  <span>CarJanitors Mobile Detailing</span>
+</div>
+
+<div class="custom-dropdown-wrapper reveal">
+    <div class="dots" onclick="toggleDropdown(this)">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="list">
+      <ul>
+        <li onclick="location.href='Home.html'">Home</li>
+        <li onclick="location.href='Scheduling.html'">Book Now</li>
+        <li onclick="location.href='Exterior.html'">Exterior Detail</li>
+        <li onclick="location.href='Interior.html'">Interior Detail</li>
+        <li onclick="location.href='Full.html'">Full Detail</li>
+        <li onclick="location.href='BiWeekly.html'">BiWeekly Detail</li>
+        <li onclick="location.href='Monthly.html'">Monthly Detail</li>
+      </ul>
+    </div>
+  </div>
+
+<script>
+  function toggleDropdown(element) {
+    document.querySelectorAll('.custom-dropdown-wrapper .dots').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.custom-dropdown-wrapper .list').forEach(l => l.classList.remove('show'));
+    element.classList.toggle('active');
+    const list = element.nextElementSibling;
+    if (list) list.classList.toggle('show');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.custom-dropdown-wrapper')) {
+      document.querySelectorAll('.custom-dropdown-wrapper .dots').forEach(d => d.classList.remove('active'));
+      document.querySelectorAll('.custom-dropdown-wrapper .list').forEach(l => l.classList.remove('show'));
+    }
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<!-- Footer -->
+<footer style="background-color: #000; color: white; padding: 2rem;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; text-align: center;">
+    <div>
+      <p style="color: #fff;">763-313-8705</p>
+      <p style="color: #fff;">651-587-6521</p>
+      <p style="color: #fff;">carjanitors@gmail.com</p>
+    </div>
+    <div>
+      <p style="color: #fff;">Maplewood, MN, USA</p>
+    </div>
+    <div style="display: flex; gap: 1rem;">
+      <a href="https://facebook.com/carjanitors" target="_blank" aria-label="Facebook">
+        <img src="images/Social Media/facebook.PNG" alt="Facebook" style="width:30px; height:30px;" />
+      </a>
+      <a href="https://instagram.com/carjanitors" target="_blank" aria-label="Instagram">
+        <img src="images/Social Media/instagram.png" alt="Instagram" style="width:30px; height:30px;" />
+      </a>
+      <a href="https://tiktok.com/carjanitors" target="_blank" aria-label="TikTok">
+        <img src="images/Social Media/tiktok.png" style="width:30px; height:30px;" />
+      </a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

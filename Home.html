@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CarJanitors</title>
+  <title>Home | CarJanitors</title>
   <style>
     body {
       margin: 0;
@@ -117,6 +117,43 @@
     .black-box-content p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
+    }
+
+    .black-box-inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 5%;
+      flex-wrap: wrap;
+    }
+
+    .black-box-images {
+      display: flex;
+      position: relative;
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .overlap-img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .img1 {
+      z-index: 2;
+      position: relative;
+      transform: rotate(-2deg);
+    }
+
+    .img2 {
+      margin-top: -40px;
+      transform: rotate(2deg);
     }
 
     .custom-dropdown-wrapper {
@@ -269,6 +306,24 @@
       .black-box-content {
         padding: 40px 20px;
       }
+      .black-box-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 20px;
+      }
+      .black-box-images {
+        max-width: 90%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+      }
+      .img1, .img2 {
+        width: 48%;
+        margin-top: 0;
+        transform: none;
+      }
       .services-strip {
         flex-direction: column;
         gap: 2px;
@@ -324,9 +379,15 @@
   </div>
 
   <div class="black-box">
-    <div class="black-box-content reveal">
-      <h2>About Us</h2>
-      <p>Want to have that clean feeling again, as if your car was brand new, book CarJanitors today! We provide a premium service that will come to your house and make sure you are left satisfied! Our goal is to make your car cleaned and maintained with proper care and with excellent customer service, and at an affordable price! Come book us today!</p>
+    <div class="black-box-inner">
+      <div class="black-box-content reveal">
+        <h2>About Us</h2>
+        <p>Want to have that clean feeling again, as if your car was brand new, book CarJanitors today! We provide a premium service that will come to your house and make sure you are left satisfied! Our goal is to make your car cleaned and maintained with proper care and with excellent customer service, and at an affordable price! Come book us today!</p>
+      </div>
+      <div class="black-box-images reveal">
+        <img src="images/preview1.png" alt="Preview 1" class="overlap-img img1">
+        <img src="images/preview2.jpeg" alt="Preview 2" class="overlap-img img2">
+      </div>
     </div>
   </div>
 
@@ -340,31 +401,31 @@
     <div class="service-card">
       <img src="images/exterior.PNG" alt="Exterior Detail">
       <div class="button-reveal-wrapper reveal">
-        <button class="btn white label-button" onclick="location.href='/services/exterior'">EXTERIOR DETAIL</button>
+        <button class="btn white label-button" onclick="window.location.href='Exterior.html'">EXTERIOR DETAIL</button>
       </div>
     </div>
     <div class="service-card">
       <img src="images/interior.PNG" alt="Interior Detail">
       <div class="button-reveal-wrapper reveal">
-        <button class="btn white label-button" onclick="location.href='/services/interior'">INTERIOR DETAIL</button>
+        <button class="btn white label-button" onclick="window.location.href='Interior.html'">INTERIOR DETAIL</button>
       </div>
     </div>
     <div class="service-card">
       <img src="images/full.PNG" alt="Full Detail">
       <div class="button-reveal-wrapper reveal">
-        <button class="btn white label-button" onclick="location.href='/services/full'">FULL DETAIL</button>
+        <button class="btn white label-button" onclick="window.location.href='Full.html'">FULL DETAIL</button>
       </div>
     </div>
     <div class="service-card">
       <img src="images/bi.PNG" alt="Biweekly Detail">
       <div class="button-reveal-wrapper reveal">
-        <button class="btn white label-button" onclick="location.href='/services/biweekly'">BIWEEKLY DETAIL</button>
+        <button class="btn white label-button" onclick="window.location.href='BiWeekly.html'">BIWEEKLY DETAIL</button>
       </div>
     </div>
     <div class="service-card">
       <img src="images/monthly.PNG" alt="Monthly Detail">
       <div class="button-reveal-wrapper reveal">
-        <button class="btn white label-button" onclick="location.href='/services/monthly'">MONTHLY DETAIL</button>
+        <button class="btn white label-button" onclick="window.location.href='Monthly.html'">MONTHLY DETAIL</button>
       </div>
     </div>
   </div>
